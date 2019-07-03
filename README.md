@@ -1,4 +1,4 @@
-## Screen shot
+## screenshot
 
 ![alt text](https://raw.githubusercontent.com/etfaghaoubeid/Front-end-Pagination/master/public/exemple.png)
 
