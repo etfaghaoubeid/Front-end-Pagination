@@ -1,20 +1,26 @@
 import React ,{useState,useEffect} from 'react';
 import Axios from 'axios';
 import Posts from './Posts'
+import Pagination from './Pagination'
 function App() {
   const [isLoading,setIsLoading] = useState(false)
   const [curentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(10)
-  const [posts,setPostes]=  useState([])
+  const [posts,setPosts]=  useState([])
   useEffect(()=>{
     setIsLoading(true)
     async function fetchPost(){
        const response =  await Axios.get('https://jsonplaceholder.typicode.com/posts')
-       setPostes(response.data)
+       setPosts(response.data)
        setIsLoading(false)
     }
     fetchPost()
   }, [posts])
+  const  indexOfLastPost = curentPage * postsPerPage
+  const  indexOfFirstPost=  indexOfLastPost -postsPerPage
+  const curentPosts= posts.slice(indexOfFirstPost,indexOfLastPost)
+ 
+  const paginate = (numberPage)=>setCurrentPage(numberPage)
 
   return (
     <div className="App">
@@ -24,7 +30,8 @@ function App() {
        </div>
        </nav>
       <div className="container">
-        <Posts isLoading={isLoading} posts={posts}/>
+        <Posts isLoading={isLoading} posts={curentPosts}/>
+        <Pagination  postsPerPage={postsPerPage}   totalPages ={posts.length} paginate={paginate}/>
       </div>
     </div>
   );
