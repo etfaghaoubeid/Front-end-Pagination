@@ -1,27 +1,30 @@
 import React ,{useState,useEffect} from 'react';
 import Axios from 'axios';
+import Posts from './Posts'
 function App() {
   const [isLoading,setIsLoading] = useState(false)
   const [curentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(10)
   const [posts,setPostes]=  useState([])
   useEffect(()=>{
+    setIsLoading(true)
     async function fetchPost(){
        const response =  await Axios.get('https://jsonplaceholder.typicode.com/posts')
-       console.log(response.data)
+       setPostes(response.data)
+       setIsLoading(false)
     }
     fetchPost()
-  })
+  }, [posts])
 
   return (
     <div className="App">
-     <nav class="navbar navbar-light bg-light">
+      <nav className="navbar navbar-light bg-light">
        <div className="container">
-  <a class="navbar-brand">Front-End Pagination</a>
-  </div>
-</nav>
+           <a className="navbar-brand">Front-End Pagination</a>
+       </div>
+       </nav>
       <div className="container">
-        
+        <Posts isLoading={isLoading} posts={posts}/>
       </div>
     </div>
   );
