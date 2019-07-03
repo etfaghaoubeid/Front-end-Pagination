@@ -1,4 +1,5 @@
 import React ,{useState,useEffect} from 'react';
+import Axios from 'axios';
 function App() {
   const [isLoading,setIsLoading] = useState(false)
   const [curentPage, setCurrentPage] = useState(1)
@@ -6,15 +7,22 @@ function App() {
   const [posts,setPostes]=  useState([])
   useEffect(()=>{
     async function fetchPost(){
-       const response =  await fetch('https://jsonplaceholder.typicode.com/posts')
-       console.log(response)
+       const response =  await Axios.get('https://jsonplaceholder.typicode.com/posts')
+       console.log(response.data)
     }
     fetchPost()
   })
 
   return (
     <div className="App">
-      <h1>atigh</h1>
+     <nav class="navbar navbar-light bg-light">
+       <div className="container">
+  <a class="navbar-brand">Front-End Pagination</a>
+  </div>
+</nav>
+      <div className="container">
+        
+      </div>
     </div>
   );
 }
