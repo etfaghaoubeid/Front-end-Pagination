@@ -30,6 +30,7 @@ function App() {
        </div>
        </nav>
       <div className="container">
+       <h1> Articles Titles</h1>
         <Posts isLoading={isLoading} posts={curentPosts}/>
         <Pagination  postsPerPage={postsPerPage}   totalPages ={posts.length} paginate={paginate}/>
       </div>
