@@ -15,7 +15,7 @@ function App() {
        setIsLoading(false)
     }
     fetchPost()
-  }, [posts])
+  }, [])
   const  indexOfLastPost = curentPage * postsPerPage
   const  indexOfFirstPost=  indexOfLastPost -postsPerPage
   const curentPosts= posts.slice(indexOfFirstPost,indexOfLastPost)
