@@ -22,4 +22,4 @@ forEach(name=>name.age)
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
+Builds the app for production to the `build` Folder.<br>
