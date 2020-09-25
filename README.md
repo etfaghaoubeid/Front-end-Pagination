@@ -5,7 +5,9 @@
 ## Available Scripts
 
 In the project directory, you can run:<br>
-###`npm install`
+
+### `npm install`
+install all dependancies
 
 ### `npm start`
 
